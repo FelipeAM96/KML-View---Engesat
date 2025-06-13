@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Criação de um KML - Pedido de Imagem de Satélite - Engesat</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+</head>
+<body>
+  <header id="header">
+    <a href="http://www.engesat.com.br/" target="_blank" rel="noopener noreferrer">
+      <img src="img/Logo Engesat.png" alt="Logo Engesat" id="logo" />
+    </a>
+    <h1>Criação de um KML para pedido de Imagem de Satélite</h1>
+  </header>
+
+  <main>
+<style>
+  #tutorial {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  /* Somente o título centralizado */
+  #tutorial h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  /* Lista alinhada à esquerda, texto em negrito */
+  #tutorial ol {
+    padding-left: 20px;
+  }
+
+  #tutorial li {
+    margin-bottom: 30px;
+  }
+
+  #tutorial li span {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: left; /* garante alinhamento à esquerda */
+  }
+
+  #tutorial li img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: 0; /* para garantir que não fique centralizado */
+  }
+
+  #tutorial li a img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  #tutorial li a img:hover {
+    transform: scale(1.1);
+  }
+
+  /* Contato centralizado */
+  #tutorial .contato {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1em;
+    color: #555;
+  }
+
+  #tutorial .contato img {
+    margin-top: 15px;
+    max-width: 120px;
+    height: auto;
+    display: inline-block;
+  }
+</style>
+
+<section id="tutorial">
+  <h2>Tutorial: Como coletar seu KML</h2>
+  <ol>
+    <li>
+      <span>Clique no ícone de criação de polígono.</span>
+      <img src="img/Poligono.png" alt="Polígono">
+    </li>
+    <li>
+      <span>Desenhe ou importe os polígonos desejados.</span>
+      <img src="img/Exemplo.png" alt="Exemplo">
+    </li>
+    <li>
+      <span>Verifique a área do polígono criado. Também é possível editar e salvar para modificar a área em km².</span>
+      <img src="img/Edição.png" alt="Edição">
+    </li>
+    <li>
+      <span>Exporte os dados no formato KML. Use o botão 'Exportar KML'.</span>
+      <img src="img/Exportar.png" alt="Exportar">
+    </li>
+    <li>
+      <span>Com o polígono em arquivo KML baixado, envie para o contato da Engesat.</span>
+      <a href="https://api.whatsapp.com/send?phone=554191340990" target="_blank" rel="noopener noreferrer">
+        <img src="img/Whatsapp_logo.png" alt="WhatsApp">
+      </a>
+    </li>
+  </ol>
+
+  <div class="contato">
+    <span>
+      Caso tenha alguma dúvida, entre em contato conosco.<br>
+      Acesse o site da Engesat para mais informações.
+    </span>
+    <br>
+    <a href="http://www.engesat.com.br/" target="_blank" rel="noopener noreferrer">
+      <img src="img/Logo Engesat - Contato.png" alt="Logo Engesat">
+    </a>
+  </div>
+</section>
+
+
+
+    <div id="right-panel">
+      <div id="toolbar">
+        <label for="kmlFile">Importar KML:</label>
+        <input type="file" id="kmlFile" accept=".kml" />
+      </div>
+
+      <div id="map"></div>
+
+      <section id="polygon-list-container">
+        <h3>Polígonos Criados</h3>
+        <ul id="polygon-list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js" crossorigin=""></script>
+  <script src="https://unpkg.com/togeojson@0.16.0/togeojson.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-geometryutil"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tokml@0.4.0/tokml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mapbox/tokml@0.4.0/tokml.min.js"></script>
+  <script src="https://unpkg.com/tokml@0.4.1/tokml.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="script.js"></script>
+
+  <section id="info-panel" style="display: none;">
+    <p id="area-info"></p>
+    <p id="file-info"></p>
+  </section>
+
+</body>
+</html>
