@@ -1,6 +1,6 @@
 body, html {
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   height: 100%;
   font-family: Arial, sans-serif;
   display: flex;
@@ -21,7 +21,8 @@ body, html {
 }
 
 #logo {
-  height: 70px;
+  height: 50px;
+  max-height: 8vh;
   width: auto;
   flex-shrink: 0;
 }
@@ -38,18 +39,17 @@ body, html {
   font-size: 30px;
   font-weight: 600;
   white-space: nowrap;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/* Layout principal com tutorial e painel direito */
 main {
   display: flex;
   flex: 1;
-  height: calc(100vh - 70px); /* altura total menos header */
+  height: calc(100vh - 70px);
   overflow: hidden;
 }
 
-/* Tutorial fixo à esquerda, 25% da largura */
 #tutorial {
   width: 25%;
   background: #f0f0f0;
@@ -61,7 +61,6 @@ main {
   line-height: 1.5;
 }
 
-/* Painel direito com toolbar, mapa e lista */
 #right-panel {
   width: 75%;
   display: flex;
@@ -69,7 +68,6 @@ main {
   height: 100%;
 }
 
-/* Toolbar no topo */
 #toolbar {
   padding: 10px 15px;
   background: #fff;
@@ -77,6 +75,7 @@ main {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -88,14 +87,12 @@ main {
   cursor: pointer;
 }
 
-/* Mapa ocupa o espaço restante */
 #map {
   flex-grow: 1;
   width: 100%;
   height: auto;
 }
 
-/* Lista de polígonos abaixo do mapa */
 #polygon-list-container {
   max-height: 200px;
   overflow-y: auto;
@@ -135,7 +132,6 @@ main {
   background: #cc0000;
 }
 
-/* Painel inferior direito para área e info KML */
 #info-panel {
   position: fixed;
   bottom: 15px;
@@ -171,12 +167,56 @@ main {
   background-position: center;
 }
 
-/* Responsivo: para telas pequenas, tutorial some e painel ocupa 100% */
+/* ========================= */
+/* MOBILE RESPONSIVIDADE */
+/* ========================= */
+
 @media (max-width: 800px) {
   #tutorial {
     display: none;
   }
+
   #right-panel {
     width: 100%;
+  }
+
+  #header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #header h1 {
+    position: static;
+    transform: none;
+    font-size: 20px;
+    margin-top: 10px;
+    white-space: normal;
+  }
+
+  #logo {
+    max-height: 50px;
+    height: auto;
+  }
+
+  #toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  #polygon-list-container {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  #info-panel {
+    max-width: 90%;
+    bottom: 10px;
+    right: 5%;
+    font-size: 13px;
+    padding: 10px;
   }
 }
